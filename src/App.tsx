@@ -37,7 +37,7 @@ function App(): JSX.Element {
     newTasks[taskIndex].done = !newTasks[taskIndex].done;
 
     setTasks(newTasks);
-  }
+  };
 
   return (
     <div className="container p-4">
@@ -66,10 +66,21 @@ function App(): JSX.Element {
                   {task.name}
                 </h2>
                 <div>
-                  {
-                    task.done ? <button className="btn btn-outline-secondary" onClick={() => toggleDone(i)}>✗</button> : <button className="btn btn-outline-primary" onClick={() => toggleDone(i)}>✓</button>
-                  }
-                  
+                  {task.done ? (
+                    <button
+                      className="btn btn-outline-secondary"
+                      onClick={() => toggleDone(i)}
+                    >
+                      ✗
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() => toggleDone(i)}
+                    >
+                      ✓
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
