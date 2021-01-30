@@ -1,3 +1,4 @@
+import { findByLabelText } from "@testing-library/react";
 import React, { CSSProperties, useState } from "react";
 
 /*export interface INewTask {
@@ -59,37 +60,59 @@ function App(): JSX.Element {
               </form>
             </div>
           </div>
-          <dl>
+          <div>
+            {tasks.length > 0 ? <h2>Tasks!!!</h2> : null}
             {tasks.map((task: ITask, i: number) => (
-              <div key={i} className="card card-body mt-2">
-                <h2 style={{ textDecoration: task.done ? "line-through" : "" }}>
-                  {task.name}
-                </h2>
-                <div>
+              <div key={i} className="card card-body mt-2" >
+                <div >
                   {task.done ? (
-                    <button
-                      className="btn btn-outline-secondary"
-                      onClick={() => toggleDone(i)}
-                    >
-                      ✗
-                    </button>
+                    <div style={cardStyle}>
+                      <h3
+                        style={{
+                          textDecoration: task.done ? "line-through" : "",
+                        }}
+                      >
+                        {task.name}
+                      </h3>
+                      <button
+                        className="btn btn-outline-secondary"
+                        onClick={() => toggleDone(i)}
+                      >
+                        ✗
+                      </button>
+                    </div>
                   ) : (
-                    <button
-                      className="btn btn-outline-primary"
-                      onClick={() => toggleDone(i)}
-                    >
-                      ✓
-                    </button>
+                    <div style={cardStyle}>
+                      <h3
+                        style={{
+                          textDecoration: task.done ? "line-through" : "",
+                        }}
+                      >
+                        {task.name}
+                      </h3>
+                      <button
+                        className="btn btn-outline-primary"
+                        onClick={() => toggleDone(i)}
+                      >
+                        ✓
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
             ))}
-          </dl>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+const cardStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+};
 
 const buttonStyle: CSSProperties = {
   float: "right",
