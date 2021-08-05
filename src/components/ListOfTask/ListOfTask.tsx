@@ -7,7 +7,7 @@ interface ListOfTaskProps {
   buttonClassName: string;
   buttonText: string;
   taskClassName: string;
-  isButtonStyled: boolean;
+  isButtonStyled: number;
   isTaskTitleStyled: boolean
 }
 

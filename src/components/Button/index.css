@@ -1,0 +1,11 @@
+.list-button {
+  max-height: 2.7rem;
+}
+
+.button-style {
+}
+
+.button-style:hover {
+  background-color: var(--app-color-secondary) !important;
+  color: var(--app-background-color) !important;
+}

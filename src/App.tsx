@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, CSSProperties } from "react";
 import Form from "./components/Form/Form";
 import { ITask } from "./ITask";
 import ListOfTask from "./components/ListOfTask/ListOfTask";
@@ -67,8 +67,9 @@ function App(): JSX.Element {
 
   return (
     <div className="container p-4">
+      <h1 style={titleStyle}>Another TODO list ✨</h1>
       <div className="row">
-        <div className="col-md-6 offset-md-3">
+        <div className="col-lg-8 offset-lg-2">
           <Form
             typeInput="text"
             addTask={addTask}
@@ -84,7 +85,7 @@ function App(): JSX.Element {
               buttonClassName={"btn btn-outline-primary"}
               taskClassName={"card card-body mt-2"}
               buttonText={"✓"}
-              isButtonStyled={false}
+              isButtonStyled={0}
               isTaskTitleStyled={false}
               tasks={tasks}
               onClick={deleteTask}
@@ -96,7 +97,7 @@ function App(): JSX.Element {
               tasks={doneTasks}
               buttonText={"✗"}
               isTaskTitleStyled={true}
-              isButtonStyled={false}
+              isButtonStyled={0}
               taskClassName={"card card-body mt-2"}
               buttonClassName={"btn btn-outline-secondary"}
               onClick={retrieveTask}
@@ -106,6 +107,13 @@ function App(): JSX.Element {
       </div>
     </div>
   );
+}
+
+const titleStyle: CSSProperties  = {
+  display: "flex",
+  justifyContent: "center",
+  margin: "4rem 0",
+  fontSize: "2.7rem"
 }
 
 export default App;

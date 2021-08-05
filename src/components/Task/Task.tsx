@@ -8,7 +8,7 @@ interface TaskProps {
   buttonText: string;
   isTaskTitleStyled: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  isButtonStyled: boolean;
+  isButtonStyled: number;
   taskName: string;
 }
 
@@ -36,4 +36,5 @@ const cardStyle: CSSProperties = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
+  alignItems: "center",
 };

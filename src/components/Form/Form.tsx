@@ -31,6 +31,7 @@ export default function Form(FormProps: FormProps) {
   return (
     <div className="card">
       <div style={formStyle} className="card-body">
+        <h1 style={titleStyle}>Add a task! ✍ </h1>
         <form onSubmit={handleSubmit}>
           <input
             type={FormProps.typeInput}
@@ -44,13 +45,19 @@ export default function Form(FormProps: FormProps) {
           <Button
             className={"btn btn-outline-success"}
             text={"Save"}
-            isStyled={true}
+            isStyled={1}
             onClick={() => {}}
           />
         </form>
       </div>
     </div>
   );
+}
+
+const titleStyle: CSSProperties = {
+  fontSize: "2rem",
+  color: "#5a5a5a",
+  marginBottom: "1.5rem"
 }
 
 const formStyle: CSSProperties = {
