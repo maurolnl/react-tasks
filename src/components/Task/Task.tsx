@@ -7,7 +7,7 @@ interface TaskProps {
   buttonClassName: string;
   buttonText: string;
   isTaskTitleStyled: boolean;
-  onClick: any;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   isButtonStyled: boolean;
   taskName: string;
 }

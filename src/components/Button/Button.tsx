@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 
 interface prop {
-  onClick: any;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
   className: string;
   isStyled: boolean;
