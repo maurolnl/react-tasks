@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef, CSSProperties } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Form from "./components/Form/Form";
 import { ITask } from "./ITask";
 import ListOfTask from "./components/ListOfTask/ListOfTask";
+import Footer from './components/Footer/Footer'
+import './App.css'
 
 function App(): JSX.Element {
 
@@ -65,11 +67,27 @@ function App(): JSX.Element {
     taskInput.current?.focus();
   };
 
+  const removeTask = (taskIndex: number, isDone: boolean) => {
+    //const newTasks: ITask[] = [...tasks];
+
+    console.log(taskIndex, isDone);
+    
+    /*
+    if(!isDone) {
+      newTasks[taskIndex].done = !newTasks[taskIndex].done;
+    }
+*/
+
+  }
+
+  const taskDone = 0
+  const undoTask = 2
+
   return (
-    <div className="container p-4">
-      <h1 style={titleStyle}>Another TODO list ✨</h1>
-      <div className="row">
-        <div className="col-lg-8 offset-lg-2">
+    <>
+      <div className="main-container">
+        <h1 className="title">Another TODO list ✨</h1>
+        <div className="main-content">
           <Form
             typeInput="text"
             addTask={addTask}
@@ -85,10 +103,12 @@ function App(): JSX.Element {
               buttonClassName={"btn btn-outline-primary"}
               taskClassName={"card card-body mt-2"}
               buttonText={"✓"}
-              isButtonStyled={0}
+              isButtonStyled={taskDone}
               isTaskTitleStyled={false}
               tasks={tasks}
               onClick={deleteTask}
+              isDone={false}
+              removeTask={removeTask}
             />
             {doneTasks.length > 0 ? (
               <h2 style={{ marginTop: 20 }}>Done Tasks :)</h2>
@@ -97,23 +117,19 @@ function App(): JSX.Element {
               tasks={doneTasks}
               buttonText={"✗"}
               isTaskTitleStyled={true}
-              isButtonStyled={0}
+              isButtonStyled={undoTask}
               taskClassName={"card card-body mt-2"}
               buttonClassName={"btn btn-outline-secondary"}
               onClick={retrieveTask}
+              isDone={true}
+              removeTask={removeTask}
             />
           </div>
         </div>
       </div>
-    </div>
+      <Footer/>
+    </>
   );
-}
-
-const titleStyle: CSSProperties  = {
-  display: "flex",
-  justifyContent: "center",
-  margin: "4rem 0",
-  fontSize: "2.7rem"
 }
 
 export default App;

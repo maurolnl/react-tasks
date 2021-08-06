@@ -1,9 +1,8 @@
 import Button from "../Button/Button";
-import {CSSProperties, useState} from 'react'
+import { useState} from 'react'
+import './index.css'
 interface FormProps {
-  //handleSubmit: React.FormEventHandler<HTMLFormElement>;
   typeInput: string;
-  //onChange: React.FormEventHandler<HTMLInputElement>;
   addTask: (name: string) => void;
   taskInput: React.RefObject<HTMLInputElement>;
   inputClassName: string;
@@ -28,40 +27,28 @@ export default function Form(FormProps: FormProps) {
     FormProps.taskInput.current?.focus();
   };
 
+  const formButton = 1
+
   return (
-    <div className="card">
-      <div style={formStyle} className="card-body">
-        <h1 style={titleStyle}>Add a task! ✍ </h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type={FormProps.typeInput}
-            onChange={handleChange}
-            value={newTask}
-            className={FormProps.inputClassName}
-            ref={FormProps.inputRef}
-            placeholder="Write a task over here..."
-            autoFocus
-          />
-          <Button
-            className={"btn btn-outline-success"}
-            text={"Save"}
-            isStyled={1}
-            onClick={() => {}}
-          />
-        </form>
-      </div>
+    <div className="form-container">
+      <h1 className="form-title">Add a task! ✍ </h1>
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          type={FormProps.typeInput}
+          onChange={handleChange}
+          value={newTask}
+          className="form-input"
+          ref={FormProps.inputRef}
+          placeholder="Write a task over here..."
+          autoFocus
+        />
+        <Button
+          className={"btn btn-outline-success"}
+          text={"Save"}
+          isStyled={formButton}
+          onClick={() => {}}
+        />
+      </form>
     </div>
   );
-}
-
-const titleStyle: CSSProperties = {
-  fontSize: "2rem",
-  color: "#5a5a5a",
-  marginBottom: "1.5rem"
-}
-
-const formStyle: CSSProperties = {
-  backgroundColor: "var(--app-background-color)",
-  border: "var(--app-color-secondary) 1px solid",
-  borderRadius: "5px"
 }

@@ -1,9 +1,12 @@
 body {
   margin: 0;
+  position: relative;
   background-color: var(--app-background-color);
   background-image: var(--app-background);
   background-size: 40px 40px;
   background-position: 0 0, 20px 20px;
+  min-height: 100vh;
+  padding-bottom: 8rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,10 +17,59 @@ body {
 :root {
   --app-background-color: #c6e1e0;
   --app-color-secondary: #b98cb9;
+  --app-color-accent: #9fd5d1;
+  --app-color-accent-secondary: #F495BF;
+  --app-color-success: #78c2ad;
+  --app-color-undo: #ffce67;
+  --app-color-delete: #f3969a;
+  --app-color-neutral: black;
+  --app-color-neutral-grey: #5a5a5a;
+  --app-color-neutral-white: white;
   --app-background: radial-gradient(#b98cb9 1px,transparent 0),radial-gradient(#b98cb9 1px,#c6e1e0   0); 
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+@media (max-width: 370px) {
+  html {
+    font-size: 78%;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.1rem;
+  line-height: inherit;
+}
+
+h1, h2, h3 {
+  font-family: revert;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--app-color-neutral-grey);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  word-break: break-all;
 }

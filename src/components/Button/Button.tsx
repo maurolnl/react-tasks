@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react';
 import './index.css'
 interface prop {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -8,22 +7,15 @@ interface prop {
 }
 
 export default function Button(buttonProps: prop) {
+  const formButton = 1
+  const doneTask = 0
+  const undoTask = 2
+  const removeTask = 3
+
   return (
     <button
-      className={buttonProps.isStyled === 1 ? `${buttonProps.className} button-style`: `${buttonProps.className} list-button`}
+      className={buttonProps.isStyled === formButton ? `button-style form-button`: buttonProps.isStyled === removeTask ? `button-style remove-button` : buttonProps.isStyled === undoTask ? `undo-button button-style` : `list-button button-style`}
       onClick={buttonProps.onClick}
-      style={buttonProps.isStyled === 1 ? buttonStyle : buttonProps.isStyled === 2 ? buttonStyleForm : {}}
     >{buttonProps.text}</button>
   );
 }
-
-const buttonStyle: CSSProperties = {
-  float: "right",
-  marginTop: 10,
-  borderColor: "var(--app-color-secondary)",
-  color: "var(--app-color-secondary)"
-}
-
-const buttonStyleForm: CSSProperties = {
-
-}; 

@@ -9,6 +9,8 @@ interface ListOfTaskProps {
   taskClassName: string;
   isButtonStyled: number;
   isTaskTitleStyled: boolean
+  isDone: boolean;
+  removeTask: Function;
 }
 
 export default function ListOfTask (ListOfTaskProps: ListOfTaskProps) {
@@ -24,6 +26,7 @@ export default function ListOfTask (ListOfTaskProps: ListOfTaskProps) {
         isTaskTitleStyled={ListOfTaskProps.isTaskTitleStyled}
         taskName={task.name}
         onClick={() => ListOfTaskProps.onClick(i)}
+        removeTask={() => ListOfTaskProps.removeTask(i, ListOfTaskProps.isDone)}
       /> 
       ))}
     </>

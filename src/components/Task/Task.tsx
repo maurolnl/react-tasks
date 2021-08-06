@@ -1,6 +1,6 @@
-import { CSSProperties } from "react";
 import Button from "../Button/Button";
 import TaskTitle from "../TaskTitle/TaskTitle";
+import './index.css'
 
 interface TaskProps {
   taskClassName: string;
@@ -10,31 +10,33 @@ interface TaskProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   isButtonStyled: number;
   taskName: string;
+  removeTask: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function Task(TaskProps: TaskProps) {
+  const removeButton = 3 
   return (
     <div
-      className={TaskProps.taskClassName}
-      style={cardStyle}
+      className="task"
     >
       <TaskTitle
         taskName={TaskProps.taskName}
         isStyled={TaskProps.isTaskTitleStyled}
       />
-      <Button
-        className={TaskProps.buttonClassName}
-        onClick={TaskProps.onClick}
-        text={TaskProps.buttonText}
-        isStyled={TaskProps.isButtonStyled}
-      />
+      <div className="button-container">
+        <Button
+          className={TaskProps.buttonClassName}
+          onClick={TaskProps.removeTask}
+          text={'D'}
+          isStyled={removeButton}
+        />
+        <Button
+          className={TaskProps.buttonClassName}
+          onClick={TaskProps.onClick}
+          text={TaskProps.buttonText}
+          isStyled={TaskProps.isButtonStyled}
+        />
+      </div>
     </div>
   );
 }
-
-const cardStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
