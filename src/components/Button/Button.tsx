@@ -8,7 +8,6 @@ interface prop {
 
 export default function Button(buttonProps: prop) {
   const formButton = 1
-  const doneTask = 0
   const undoTask = 2
   const removeTask = 3
 
