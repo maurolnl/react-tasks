@@ -49,6 +49,7 @@ function App(): JSX.Element {
   };
 
   const retrieveTask = (taskIndex: number) => { //Change done task to undone
+    
     const newDoneTasks: ITask[] = [...doneTasks];
     newDoneTasks[taskIndex].done = !newDoneTasks[taskIndex].done;
 
@@ -68,16 +69,31 @@ function App(): JSX.Element {
   };
 
   const removeTask = (taskIndex: number, isDone: boolean) => {
-    //const newTasks: ITask[] = [...tasks];
-
     console.log(taskIndex, isDone);
-    
-    /*
-    if(!isDone) {
-      newTasks[taskIndex].done = !newTasks[taskIndex].done;
-    }
-*/
 
+    if(!isDone) {
+      const newTasks: ITask[] = [...tasks];
+
+      const deletedTask = newTasks.splice(taskIndex, 1) 
+      console.log(deletedTask);
+
+      setTasks(newTasks);
+      window.localStorage.setItem('todoTasks', '')
+      window.localStorage.setItem('todoTasks', JSON.stringify(newTasks))
+
+      return
+    }
+    const newDoneTasks: ITask[] = [...doneTasks]
+
+    const deletedTask = newDoneTasks.splice(taskIndex, 1)
+    console.log(deletedTask);
+    
+
+    setDoneTasks(newDoneTasks);
+    window.localStorage.setItem('doneTasks', '')
+    window.localStorage.setItem('doneTasks', JSON.stringify(newDoneTasks))
+    
+    return
   }
 
   const taskDone = 0
