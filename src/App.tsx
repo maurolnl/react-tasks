@@ -1,99 +1,63 @@
-import React, { CSSProperties, useState } from "react";
-
-/*export interface INewTask {
-  newTask: string;
-}*/
-
-type FormElement = React.FormEvent<HTMLFormElement>;
-type InputElement = React.FormEvent<HTMLInputElement>;
-
-interface ITask {
-  name: string;
-  done: boolean;
-}
+import Form from "./components/Form/Form";
+import ListOfTask from "./components/ListOfTask/ListOfTask";
+import Footer from './components/Footer/Footer'
+import './App.css'
+import useTasks from "./hooks/useTasks";
 
 function App(): JSX.Element {
-  //const [newTask, setNewTask] = useState<INewTask | undefined>({newTask: ""});
-  const [newTask, setNewTask] = useState<string>("");
-  const [tasks, setTasks] = useState<ITask[]>([]);
 
-  const handleSubmit = (e: FormElement) => {
-    e.preventDefault();
-    addTask(newTask);
-    setNewTask(""); //wipe form input
-  };
+  const {tasks, doneTasks, addTask, deleteTask, retrieveTask, removeTask, taskInput} = useTasks();
 
-  const addTask = (name: string) => {
-    const newTasks: ITask[] = [...tasks, { name, done: false }];
-    setTasks(newTasks);
-  };
-
-  const handleChange = (e: InputElement) => {
-    setNewTask(e.currentTarget.value);
-  };
-
-  const toggleDone = (taskIndex: number) => {
-    const newTasks: ITask[] = [...tasks];
-    newTasks[taskIndex].done = !newTasks[taskIndex].done;
-
-    setTasks(newTasks);
-  };
+  const taskDone = 0
+  const undoTask = 2
 
   return (
-    <div className="container p-4">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <div className="card">
-            <div className="card-body">
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  onChange={handleChange}
-                  value={newTask}
-                  className="form-control"
-                  autoFocus
-                />
-                <button className="btn btn-outline-success" style={buttonStyle}>
-                  Save
-                </button>
-              </form>
-            </div>
+    <>
+      <div className="main-container">
+        <h1 className="title">Another TODO list ✨</h1>
+        <div className="main-content">
+          <Form
+            typeInput="text"
+            addTask={addTask}
+            taskInput={taskInput}
+            inputClassName="form-control"
+            inputRef={taskInput}
+          />
+          <div>
+            {tasks.length > 0 ? (
+              <h2 style={{ marginTop: 20 }}>Tasks!!!</h2>
+            ) : null}
+            <ListOfTask
+              buttonClassName={"btn btn-outline-primary"}
+              taskClassName={"card card-body mt-2"}
+              buttonText={"✓"}
+              isButtonStyled={taskDone}
+              isTaskTitleStyled={false}
+              tasks={tasks}
+              onClick={deleteTask}
+              isDone={false}
+              removeTask={removeTask}
+            />
+            {doneTasks.length > 0 ? (
+              <h2 style={{ marginTop: 20 }}>Done Tasks :)</h2>
+            ) : null}
+            <ListOfTask
+              tasks={doneTasks}
+              buttonText={"✗"}
+              isTaskTitleStyled={true}
+              isButtonStyled={undoTask}
+              taskClassName={"card card-body mt-2"}
+              buttonClassName={"btn btn-outline-secondary"}
+              onClick={retrieveTask}
+              isDone={true}
+              removeTask={removeTask}
+            />
           </div>
-          <dl>
-            {tasks.map((task: ITask, i: number) => (
-              <div key={i} className="card card-body mt-2">
-                <h2 style={{ textDecoration: task.done ? "line-through" : "" }}>
-                  {task.name}
-                </h2>
-                <div>
-                  {task.done ? (
-                    <button
-                      className="btn btn-outline-secondary"
-                      onClick={() => toggleDone(i)}
-                    >
-                      ✗
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-outline-primary"
-                      onClick={() => toggleDone(i)}
-                    >
-                      ✓
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
-    </div>
+      <Footer/>
+    </>
   );
 }
-
-const buttonStyle: CSSProperties = {
-  float: "right",
-  marginTop: 10,
-};
 
 export default App;

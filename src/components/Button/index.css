@@ -1,0 +1,68 @@
+.button-style {
+  font-weight: 400;
+  text-align: center;
+  padding: .375rem .75rem;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.list-button {
+  max-height: 2.7rem;
+  float: right;
+  color: var(--app-color-success);
+  margin-right: .5rem;
+}
+
+.list-button:hover {
+  background-color: var(--app-color-success);
+  color: white;
+}
+
+.undo-button{
+  max-height: 2.7rem;
+  float: right;
+  color: var(--app-color-undo);
+  border-color: var(--app-color-undo);
+  margin-right: .5rem;
+}
+
+.undo-button:hover {
+  background-color: var(--app-color-undo);
+  color: white;
+}
+
+.remove-button{
+  max-height: 2.7rem;
+  cursor:pointer;
+  float: right;
+  padding: .35rem .56rem;
+  color: var(--app-color-delete);
+  border-color: var(--app-color-delete);
+  margin-right: .5rem;
+}
+
+.remove-button:hover{
+  background-color: var(--app-color-delete);
+  color: white;
+}
+.remove-button:hover svg {
+  fill: white;
+}
+
+.trash-container {
+  height: 20px;
+  width: 20px;
+}
+
+.form-button:hover {
+  background-color: var(--app-color-secondary);
+  color: var(--app-background-color);
+}
+
+.form-button {
+  float: right;
+  margin-top: 10px;
+  border-color: var(--app-color-secondary);
+  color: var(--app-color-secondary);
+}
