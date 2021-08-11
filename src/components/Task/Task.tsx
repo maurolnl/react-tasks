@@ -1,5 +1,6 @@
 import Button from "../Button/Button";
 import TaskTitle from "../TaskTitle/TaskTitle";
+import TrashIcon from "../TrashIcon/TrashIcon";
 import './index.css'
 
 interface TaskProps {
@@ -14,7 +15,6 @@ interface TaskProps {
 }
 
 export default function Task(TaskProps: TaskProps) {
-  const removeButton = 3 
   return (
     <div
       className="task"
@@ -24,12 +24,7 @@ export default function Task(TaskProps: TaskProps) {
         isStyled={TaskProps.isTaskTitleStyled}
       />
       <div className="button-container">
-        <Button
-          className={TaskProps.buttonClassName}
-          onClick={TaskProps.removeTask}
-          text={'D'}
-          isStyled={removeButton}
-        />
+        <TrashIcon onClick={TaskProps.removeTask}/>
         <Button
           className={TaskProps.buttonClassName}
           onClick={TaskProps.onClick}

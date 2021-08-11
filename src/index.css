@@ -32,11 +32,19 @@ body {
   html {
     font-size: 85%;
   }
+  svg.trash-container {
+    height: 17px;
+    width: 17px;
+  }
 }
 
 @media (max-width: 370px) {
   html {
     font-size: 78%;
+  }
+  svg.trash-container {
+    height: 15.5px;
+    width: 15.5px;
   }
 }
 

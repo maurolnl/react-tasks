@@ -34,17 +34,26 @@
 
 .remove-button{
   max-height: 2.7rem;
+  cursor:pointer;
   float: right;
+  padding: .35rem .56rem;
   color: var(--app-color-delete);
   border-color: var(--app-color-delete);
   margin-right: .5rem;
 }
 
-.remove-button:hover {
+.remove-button:hover{
   background-color: var(--app-color-delete);
   color: white;
 }
+.remove-button:hover svg {
+  fill: white;
+}
 
+.trash-container {
+  height: 20px;
+  width: 20px;
+}
 
 .form-button:hover {
   background-color: var(--app-color-secondary);
